@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import {BlogService} from './service/blog.service';
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import { isPlatformBrowser } from '@angular/common';
     imports: [
         BrowserModule.withServerTransition({appId: 'blog'})
     ],
-    providers: [],
+    providers: [
+        BlogService
+    ],
     bootstrap: [AppComponent]
 })
 
