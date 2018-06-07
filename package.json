@@ -1,8 +1,8 @@
 {
-  "name": "angular-io-example",
+  "name": "blog-frontend",
   "version": "0.1.0",
   "private": true,
-  "description": "Example project from an angular.io guide.",
+  "description": "Blog front-end",
   "scripts": {
     "ng": "ng",
     "build": "ng build --prod",
@@ -19,7 +19,7 @@
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
   },
   "keywords": [],
-  "author": "",
+  "author": "Martijn Klene",
   "license": "MIT",
   "dependencies": {
     "@angular/animations": "^6.0.4",
