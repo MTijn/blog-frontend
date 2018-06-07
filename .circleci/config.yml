@@ -32,9 +32,10 @@ jobs:
           name: angular-test
           command: npm test --no-progress
       - run:
+          name: e2e-test
+          command: npm run e2e
+      - run:
           name: angular-lint
           command: npm run lint --format junit -o tslint.xml
-      - store_artifacts:
-          path: tslint.xml
 
 
