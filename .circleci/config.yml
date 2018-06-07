@@ -31,9 +31,6 @@ jobs:
       - run:
           name: angular-test
           command: npm test --no-progress
-      - store_artifacts:
-          path: test-results.xml
-          prefix: tests
       - run:
           name: angular-lint
           command: npm lint --format junit -o tslint.xml
