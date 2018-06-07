@@ -3,11 +3,14 @@
         <div class="row" *ngFor="let blogPost of blogPosts">
             <article class="col-lg-12">
                 <header>
-                    <h1>{{blogPost.title}}</h1>
+                    <h1 class="title">{{blogPost.title}}</h1>
+                    <span class="published">Published at: {{blogPost.publishedAt | date: 'fullDate'}}</span>
                 </header>
-                <p>
-                    {{blogPost.content}}
-                </p>
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{blogPost.content}}
+                    </div>
+                </div>
             </article>
         </div>
     </div>

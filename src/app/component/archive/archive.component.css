@@ -1,0 +1,10 @@
+header {
+    margin-bottom: 1rem;
+}
+header .title {
+    margin-bottom: 0.01rem;
+}
+.published {
+    font-size: 0.75em;
+    color: rgba(0,0,0,.5);
+}

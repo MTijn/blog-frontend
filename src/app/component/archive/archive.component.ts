@@ -4,7 +4,10 @@ import {BlogService} from '../../service/blog.service';
 
 @Component({
     selector: 'archive',
-    templateUrl: 'archive.component.html'
+    templateUrl: 'archive.component.html',
+    styleUrls: [
+        'archive.component.css'
+    ]
 })
 export class ArchiveComponent implements OnInit {
     private blogService: BlogService;
