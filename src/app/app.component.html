@@ -1,8 +1,43 @@
-<div class="row" *ngIf="blogPost">
-    <article class="col-lg-12">
-        <header>
-            <h1>{{blogPost.title}}</h1>
-        </header>
-        <p>{{blogPost.content}}</p>
-    </article>
+<header>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+        <a class="navbar-brand" routerLink="">
+            <h1 class="sitename">MartijnKlene.nl</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="archive">Archive</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <router-outlet></router-outlet>
 </div>
+<footer class="footer bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <i class="fab fa-github" aria-hidden="true"></i>
+                <a href="https://github.com/mtijn" target="_blank">Github</a>
+            </div>
+            <div class="col-lg-3">
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+                <a href="https://twitter.com/MTijnNL" target="_blank">Twitter</a>
+            </div>
+            <div class="col-lg-3">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+                <a href="https://www.linkedin.com/in/martijn-klene-34b4881a/" target="_blank">LinkedIn</a>
+            </div>
+            <div class="col-lg-3">
+                <i class="fab fa-mixcloud" aria-hidden="true"></i>
+                <a href="https://www.mixcloud.com/MTijn/uploads" target="_blank">Mixcloud</a>
+            </div>
+        </div>
+    </div>
+</footer>

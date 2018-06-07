@@ -18,4 +18,8 @@ export class BlogService {
     fetchLastPublishedBlogPost(): Observable<BlogPost> {
         return this.httpClient.get<BlogPost>(environment.api_url + '/v1/blog/last');
     }
+
+    fetchAllBlogPosts(): Observable<BlogPost[]> {
+        return this.httpClient.get<BlogPost[]>(environment.api_url + '/v1/blog/all');
+    }
 }

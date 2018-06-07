@@ -1,0 +1,14 @@
+<div class="row" *ngIf="blogPosts">
+    <div class="col-lg-12">
+        <div class="row" *ngFor="let blogPost of blogPosts">
+            <article class="col-lg-12">
+                <header>
+                    <h1>{{blogPost.title}}</h1>
+                </header>
+                <p>
+                    {{blogPost.content}}
+                </p>
+            </article>
+        </div>
+    </div>
+</div>

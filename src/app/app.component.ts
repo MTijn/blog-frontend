@@ -7,19 +7,10 @@ import {BlogPost} from './entity/BlogPost';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  private blogService: BlogService;
-  public blogPost: BlogPost;
+export class AppComponent {
   public title: string;
 
-    constructor(blogService: BlogService) {
-        this.blogService = blogService;
+    constructor() {
         this.title = 'app';
-    }
-
-    ngOnInit() {
-        this.blogService.fetchLastPublishedBlogPost().subscribe(blogPost => {
-            this.blogPost = blogPost;
-        });
     }
 }

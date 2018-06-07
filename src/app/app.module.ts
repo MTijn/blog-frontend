@@ -5,21 +5,24 @@ import {AppComponent} from './app.component';
 
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import {BlogService} from './service/blog.service';
 import {HttpClientModule} from '@angular/common/http';
+import {HomeComponent} from './component/home/HomeComponent';
+import {ArchiveComponent} from './component/archive/archive.component';
+import {ROUTING} from './app.routing';
 
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        HomeComponent,
+        ArchiveComponent
     ],
     imports: [
         BrowserModule.withServerTransition({appId: 'blog'}),
-        HttpClientModule
+        HttpClientModule,
+        ROUTING
     ],
-    providers: [
-        BlogService
-    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
 
