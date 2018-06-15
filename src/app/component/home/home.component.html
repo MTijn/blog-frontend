@@ -5,9 +5,7 @@
             <span class="published">Published at: {{blogPost.publishedAt | date: 'fullDate'}}</span>
         </header>
         <div class="row">
-            <div class="col-lg-12">
-                {{blogPost.content}}
-            </div>
+            <div class="col-lg-12" [innerHTML]="blogPost.content"></div>
         </div>
     </article>
 </div>
