@@ -6,7 +6,6 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/node:8.11-browsers
         environment:
           CHROME_BIN: "/usr/bin/google-chrome"
@@ -36,9 +35,6 @@ jobs:
       - run:
           name: angular-lint
           command: npm run lint --format junit -o tslint.xml
-      - run:
-          name: docker-build
-          command: docker build .
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
 
 workflows:
