@@ -23,7 +23,6 @@ jobs:
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
-            - ~/.cache/yarn
             - ./node_modules
       - run:
           name: angular-build
@@ -37,5 +36,6 @@ jobs:
       - run:
           name: angular-lint
           command: npm run lint --format junit -o tslint.xml
-
-
+      - run:
+          name: docker-build
+          command: docker build . mtijnnl/blog-frontend:latest && docker push mtijnnl/blog-frontend:latest
