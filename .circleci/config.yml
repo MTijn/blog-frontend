@@ -38,4 +38,4 @@ jobs:
           command: npm run lint --format junit -o tslint.xml
       - run:
           name: docker-build
-          command: docker build . mtijnnl/blog-frontend:latest && docker push mtijnnl/blog-frontend:latest
+          command: docker build .
