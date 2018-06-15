@@ -10,7 +10,7 @@ FROM node:8-alpine
 WORKDIR /app
 # Copy dependency definitions
 COPY --from=buildContainer /app/package.json /app
-COPY --from=buildContainer /app/server.js /app
+COPY --from=buildContainer /app/dist/server.js /app
 
 # Get all the code needed to run the app
 COPY --from=buildContainer /app/dist /app/dist
