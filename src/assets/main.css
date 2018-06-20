@@ -2,6 +2,10 @@ body > app-root > .container {
     padding-top: 100px;
 }
 
+body {
+    margin-bottom: 60px;
+}
+
 h1.sitename {
     font-size: 2rem;
 }

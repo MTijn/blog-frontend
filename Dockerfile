@@ -3,7 +3,7 @@ FROM node:8-alpine as buildContainer
 COPY . /app
 WORKDIR /app
 RUN npm install
-RUN npm run build:ssr
+RUN npm run build:client-and-server-bundles
 
 FROM node:8-alpine
 
