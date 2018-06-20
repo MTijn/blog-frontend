@@ -4,6 +4,7 @@ COPY . /app
 WORKDIR /app
 RUN npm install
 RUN npm run build:client-and-server-bundles
+RUN npm run build:ssr
 
 FROM node:8-alpine
 
