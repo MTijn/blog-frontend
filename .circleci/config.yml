@@ -24,6 +24,7 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
+      - run: npm rebuild node-sass --force
       - run:
           name: angular-build
           command: npm build --no-progress
