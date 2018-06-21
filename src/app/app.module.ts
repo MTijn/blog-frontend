@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {AppComponent} from './app.component';
 
@@ -10,6 +10,7 @@ import {HomeComponent} from './component/home/HomeComponent';
 import {ArchiveComponent} from './component/archive/archive.component';
 import {ROUTING} from './app.routing';
 
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 @NgModule({
     declarations: [
@@ -20,8 +21,10 @@ import {ROUTING} from './app.routing';
     imports: [
         BrowserModule.withServerTransition({appId: 'blog'}),
         HttpClientModule,
-        ROUTING
+        ROUTING,
+        MDBBootstrapModule.forRoot()
     ],
+    schemas: [NO_ERRORS_SCHEMA],
     providers: [],
     bootstrap: [AppComponent]
 })
