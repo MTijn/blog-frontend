@@ -3,6 +3,7 @@ FROM node:8-alpine as buildContainer
 COPY . /app
 WORKDIR /app
 RUN npm install
+RUN npm rebuild node-sass --force
 RUN npm run build:client-and-server-bundles
 RUN npm run build:ssr
 
