@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    api_url: 'https://api2.martijnklene.nl',
+    api_url: 'https://api.martijnklene.nl',
 };
