@@ -9,10 +9,11 @@ import {BlogService} from '../../service/blog.service';
         './home.component.css'
     ]
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
     private blogService: BlogService;
     public blogPost: BlogPost;
     public title: string;
+    public blogpostSchema: object;
 
     constructor(blogService: BlogService) {
         this.blogService = blogService;
@@ -22,6 +23,14 @@ export class HomeComponent implements OnInit{
     ngOnInit() {
         this.blogService.fetchLastPublishedBlogPost().subscribe(blogPost => {
             this.blogPost = blogPost;
+            this.blogpostSchema = {
+                '@context': 'http://schema.org',
+                '@type': 'BlogPosting',
+                'headline': blogPost.title,
+                'datePublished': blogPost.publishedAt,
+                'keywords': blogPost.tags,
+                'url': 'https://martijnklene.nl'
+            };
         });
     }
 }

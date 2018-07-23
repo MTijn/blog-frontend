@@ -34,6 +34,7 @@
     "@angular/upgrade": "^6.0.4",
     "@nguniversal/express-engine": "^6.0.0",
     "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
+    "@ngx-lite/json-ld": "^0.4.2",
     "angular-bootstrap-md": "^6.1.4",
     "angular-in-memory-web-api": "^0.6.0",
     "bootstrap": "^4.1.1",

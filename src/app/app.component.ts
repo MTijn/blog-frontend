@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {BlogService} from './service/blog.service';
-import {BlogPost} from './entity/BlogPost';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +11,11 @@ export class AppComponent {
     constructor() {
         this.title = 'app';
     }
+
+    schema = {
+        '@context': 'http://schema.org',
+        '@type': 'WebSite',
+        'name': 'MartijnKlene.nl',
+        'url': 'https://martijnklene.nl'
+    };
 }

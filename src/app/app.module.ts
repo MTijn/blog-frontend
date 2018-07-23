@@ -11,6 +11,7 @@ import {ArchiveComponent} from './component/archive/archive.component';
 import {ROUTING} from './app.routing';
 
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {NgxJsonLdModule} from '@ngx-lite/json-ld';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
         BrowserModule.withServerTransition({appId: 'blog'}),
         HttpClientModule,
         ROUTING,
-        MDBBootstrapModule.forRoot()
+        MDBBootstrapModule.forRoot(),
+        NgxJsonLdModule
     ],
     schemas: [NO_ERRORS_SCHEMA],
     providers: [],
