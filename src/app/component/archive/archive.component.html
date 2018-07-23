@@ -1,10 +1,10 @@
 <div class="row" *ngIf="blogPosts">
     <div class="col-12">
-        <div class="row" *ngFor="let blogPost of blogPosts">
+        <div class="row blog-post" *ngFor="let blogPost of blogPosts">
             <article class="col-12">
                 <header>
                     <h1 class="title">{{blogPost.title}}</h1>
-                    <span class="published">Published at: {{blogPost.publishedAt | date: 'fullDate'}}</span>
+                    <span class="meta">Published at: {{blogPost.publishedAt | date: 'fullDate'}}</span>
                 </header>
                 <div class="row">
                     <div class="col-12" [innerHTML]="blogPost.content"></div>

@@ -21,3 +21,16 @@ h1.sitename {
 .fa {
     padding-right: 5px;
 }
+
+header {
+    margin-bottom: 1rem;
+}
+header .title {
+    margin-bottom: 0.01rem;
+}
+.blog-post {
+    .meta {
+        margin-bottom: 1.25rem;
+        color: #999999;
+    }
+}
