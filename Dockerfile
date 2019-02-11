@@ -1,4 +1,4 @@
-FROM node:8-alpine as buildContainer
+FROM node:10.15.1-alpine as buildContainer
 
 COPY . /app
 WORKDIR /app
@@ -7,7 +7,7 @@ RUN npm rebuild node-sass --force
 RUN npm run build:client-and-server-bundles
 RUN npm run build:ssr
 
-FROM node:8-alpine
+FROM node:10.15.1-alpine
 
 WORKDIR /app
 # Copy dependency definitions
