@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {JwksValidationHandler, OAuthService} from 'angular-oauth2-oidc';
 import {authConfig} from './config/auth.config';
+import {HttpClient, HttpHandler} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,9 @@ import {authConfig} from './config/auth.config';
 export class AppComponent {
   public title: string;
 
-    constructor(private oauthService: OAuthService) {
+    constructor(public oauthService: OAuthService) {
         this.title = 'app';
-        this.configureWithNewConfigApi();
+        this.configureOathSettings();
     }
 
     schema = {
@@ -22,7 +23,7 @@ export class AppComponent {
         'url': 'https://martijnklene.nl'
     };
 
-    private configureWithNewConfigApi() {
+    private configureOathSettings() {
         this.oauthService.configure(authConfig);
         this.oauthService.tokenValidationHandler = new JwksValidationHandler();
         this.oauthService.loadDiscoveryDocumentAndTryLogin();

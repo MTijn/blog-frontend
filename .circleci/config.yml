@@ -29,10 +29,10 @@ jobs:
           command: npm build --no-progress
       - run:
           name: angular-test
-          command: npm test --no-progress
+          command: npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
       - run:
           name: e2e-test
-          command: npm run e2e
+          command: npm run e2e -- --protractor-config=./e2e/protractor.conf.js
       - run:
           name: angular-lint
           command: npm run lint --format junit -o tslint.xml

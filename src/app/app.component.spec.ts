@@ -2,6 +2,8 @@ import {TestBed, async} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
+import {OAuthModule, OAuthService} from 'angular-oauth2-oidc';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
@@ -10,7 +12,9 @@ describe('AppComponent', () => {
                 AppComponent
             ],
             imports: [
-                RouterTestingModule
+                RouterTestingModule,
+                HttpClientModule,
+                OAuthModule.forRoot()
             ],
             schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
         }).compileComponents();

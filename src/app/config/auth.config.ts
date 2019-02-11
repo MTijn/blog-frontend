@@ -6,10 +6,10 @@ export const authConfig: AuthConfig = {
     issuer: environment.oauth_issuer,
 
     // URL of the SPA to redirect the user to after login
-    redirectUri: window.location.origin,
+    redirectUri: environment.oauth_redirect,
 
     // URL of the SPA to redirect the user after silent refresh
-    silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+    silentRefreshRedirectUri: environment.oauth_redirect + '/silent-refresh.html',
 
     // The SPA's id. The SPA is registerd with this id at the auth-server
     clientId: environment.oauth_client_id,
