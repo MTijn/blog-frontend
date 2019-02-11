@@ -35,4 +35,10 @@ describe('AppComponent', () => {
         const compiled = fixture.debugElement.nativeElement;
         expect(compiled.querySelector('h1').textContent).toContain('MartijnKlene.nl');
     }));
+    it('should not be logged in at the moment', async(() => {
+        const fixture = TestBed.createComponent(AppComponent);
+        fixture.detectChanges();
+        const compiled = fixture.debugElement.nativeElement;
+        expect(compiled.querySelector('button#loginButton').textContent).toContain('Login');
+    }));
 });

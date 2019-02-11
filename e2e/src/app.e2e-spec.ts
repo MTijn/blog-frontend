@@ -11,4 +11,8 @@ describe('workspace-project App', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('MartijnKlene.nl');
   });
+  it('should not be logged in', () => {
+    page.navigateTo();
+    expect(page.getLoginButton()).toEqual('LOGIN');
+  });
 });

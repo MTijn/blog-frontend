@@ -15,8 +15,8 @@
             </ul>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li *ngIf="oauthService.getIdentityClaims()"><button mdbBtn type="button" color="indigo" (click)="logoff()">Logout</button></li>
-            <li *ngIf="oauthService.getIdentityClaims() == null"><button mdbBtn type="button" color="indigo" (click)="login()">Login</button></li>
+            <li *ngIf="oauthService.getIdentityClaims()"><button mdbBtn id="logoutButton" type="button" color="indigo" (click)="logoff()">Logout</button></li>
+            <li *ngIf="oauthService.getIdentityClaims() == null"><button id="loginButton" mdbBtn type="button" color="indigo" (click)="login()">Login</button></li>
         </ul>
     </nav>
 </header>
