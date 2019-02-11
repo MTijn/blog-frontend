@@ -18,6 +18,9 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
+          name: sass-rebuild
+          command: npm rebuild node-sass
+      - run:
           name: install-dependencies
           command: npm install
       - save_cache:
