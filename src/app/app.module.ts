@@ -12,6 +12,8 @@ import {ROUTING} from './app.routing';
 
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxJsonLdModule} from '@ngx-lite/json-ld';
+import {OAuthModule} from 'angular-oauth2-oidc';
+import {environment} from '../environments/environment';
 
 @NgModule({
     declarations: [
@@ -24,7 +26,13 @@ import {NgxJsonLdModule} from '@ngx-lite/json-ld';
         HttpClientModule,
         ROUTING,
         MDBBootstrapModule.forRoot(),
-        NgxJsonLdModule
+        NgxJsonLdModule,
+        OAuthModule.forRoot({
+            resourceServer: {
+                allowedUrls: [environment.api_url],
+                sendAccessToken: true
+            }
+        })
     ],
     schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
     providers: [],
