@@ -39,6 +39,6 @@ describe('AppComponent', () => {
         const fixture = TestBed.createComponent(AppComponent);
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('button#loginButton').textContent).toContain('Login');
+        expect(compiled.querySelector('a#loginButton').textContent).toContain('Login');
     }));
 });
