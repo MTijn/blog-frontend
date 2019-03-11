@@ -8,8 +8,8 @@ import {BlogPost} from '../../entity/BlogPost';
   templateUrl: 'detail.component.html'
 })
 export class DetailComponent implements OnInit {
-  protected blogPost: BlogPost;
-  protected blogPostSchema: object;
+  public blogPost: BlogPost;
+  public blogPostSchema: object;
 
   constructor(
     private blogService: BlogService,
