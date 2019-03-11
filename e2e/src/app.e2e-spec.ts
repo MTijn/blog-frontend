@@ -13,6 +13,6 @@ describe('workspace-project App', () => {
   });
   it('should not be logged in', () => {
     page.navigateTo();
-    expect(page.getLoginButton()).toEqual('LOGIN');
+    expect(page.getLoginButton()).toEqual('Login');
   });
 });
