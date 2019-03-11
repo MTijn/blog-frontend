@@ -3,12 +3,11 @@
         <div class="row blog-post" *ngFor="let blogPost of blogPosts">
             <article class="col-12">
                 <header>
-                    <h1 class="title">{{blogPost.title}}</h1>
+                    <h1 class="title">
+                      <a [routerLink]="['/detail', blogPost.id]">{{blogPost.title}}</a>
+                    </h1>
                     <span class="meta">Published at: {{blogPost.publishedAt | date: 'fullDate'}}</span>
                 </header>
-                <div class="row">
-                    <div class="col-12" [innerHTML]="blogPost.content"></div>
-                </div>
             </article>
         </div>
     </div>

@@ -14,12 +14,14 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxJsonLdModule} from '@ngx-lite/json-ld';
 import {OAuthModule} from 'angular-oauth2-oidc';
 import {environment} from '../environments/environment';
+import {DetailComponent} from './component/detail/detail.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
-        ArchiveComponent
+        ArchiveComponent,
+        DetailComponent
     ],
     imports: [
         BrowserModule.withServerTransition({appId: 'blog'}),
@@ -43,8 +45,5 @@ export class AppModule {
     constructor(
         @Inject(PLATFORM_ID) private platformId: Object,
         @Inject(APP_ID) private appId: string) {
-        const platform = isPlatformBrowser(platformId) ?
-            'in the browser' : 'on the server';
-        console.log(`Running ${platform} with appId=${appId}`);
     }
 }

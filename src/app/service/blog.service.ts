@@ -22,4 +22,8 @@ export class BlogService {
     fetchAllBlogPosts(): Observable<BlogPost[]> {
         return this.httpClient.get<BlogPost[]>(environment.api_url + '/v1/blog/all');
     }
+
+    fetchSingleBlogPostByIdentifier(identifier: String) {
+        return this.httpClient.get<BlogPost>(environment.api_url + '/v1/blog/' + identifier);
+    }
 }
