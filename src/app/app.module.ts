@@ -38,7 +38,6 @@ import {DetailComponent} from './component/detail/detail.component';
     ],
     schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
     providers: [],
-    bootstrap: [AppComponent]
 })
 
 export class AppModule {
