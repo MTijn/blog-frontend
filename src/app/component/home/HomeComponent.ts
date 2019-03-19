@@ -3,7 +3,9 @@ import {BlogPost} from '../../entity/BlogPost';
 import {BlogService} from '../../service/blog.service';
 import {makeStateKey, TransferState} from '@angular/platform-browser';
 
-const STATE_LAST_BLOGPOST = makeStateKey('lastBlogPost')
+const STATE_LAST_BLOGPOST = makeStateKey('lastBlogPost');
+const STATE_LAST_BLOGPOST_SCHEMA = makeStateKey('lastBlogPostSchema');
+
 
 @Component({
     selector: 'home',
@@ -21,10 +23,12 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.blogPost = this.state.get(STATE_LAST_BLOGPOST, <any>[]);
-        console.log(this.blogPost);
-        if (this.blogPost === undefined) {
+        this.blogpostSchema = this.state.get(STATE_LAST_BLOGPOST_SCHEMA, <any>[]);
+
+        if (this.blogPost.id === undefined) {
           this.blogService.fetchLastPublishedBlogPost().subscribe(blogPost => {
             this.blogPost = blogPost;
+            this.state.set(STATE_LAST_BLOGPOST, this.blogPost);
             this.blogpostSchema = {
               '@context': 'http://schema.org',
               '@type': 'BlogPosting',
@@ -40,6 +44,7 @@ export class HomeComponent implements OnInit {
               },
               'image': 'https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg'
             };
+            this.state.set(STATE_LAST_BLOGPOST_SCHEMA, this.blogpostSchema);
           });
         }
     }
