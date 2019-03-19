@@ -1,14 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {APP_ID, CUSTOM_ELEMENTS_SCHEMA, Inject, NgModule, NO_ERRORS_SCHEMA, PLATFORM_ID} from '@angular/core';
 
 import {AppComponent} from './app.component';
-
-import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {HomeComponent} from './component/home/HomeComponent';
 import {ArchiveComponent} from './component/archive/archive.component';
-import {ROUTING} from './app.routing';
+import {AppRoutingModule} from './app.routing';
 
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxJsonLdModule} from '@ngx-lite/json-ld';
@@ -26,7 +23,7 @@ import {DetailComponent} from './component/detail/detail.component';
     imports: [
         BrowserModule.withServerTransition({appId: 'blog'}),
         HttpClientModule,
-        ROUTING,
+        AppRoutingModule,
         MDBBootstrapModule.forRoot(),
         NgxJsonLdModule,
         OAuthModule.forRoot({
