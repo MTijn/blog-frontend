@@ -22,15 +22,13 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.blogPost = this.state.get(STATE_LAST_BLOGPOST, <any>[]);
-        this.blogpostSchema = this.state.get(STATE_LAST_BLOGPOST_SCHEMA, <any>[]);
+        this.blogPost = this.state.get(STATE_LAST_BLOGPOST, <BlogPost>this.blogPost);
+        this.blogpostSchema = this.state.get(STATE_LAST_BLOGPOST_SCHEMA, <object>this.blogpostSchema);
 
-        console.log(this.blogpostSchema);
-
-        if (this.blogPost.id === undefined) {
+        if (this.blogPost === undefined) {
             this.blogService.fetchLastPublishedBlogPost().subscribe(blogPost => {
                 this.blogPost = blogPost;
-                this.state.set(STATE_LAST_BLOGPOST, blogPost);
+                this.state.set(STATE_LAST_BLOGPOST, <BlogPost>blogPost);
                 this.blogpostSchema = {
                     '@context': 'http://schema.org',
                     '@type': 'BlogPosting',
@@ -46,7 +44,7 @@ export class HomeComponent implements OnInit {
                     },
                     'image': 'https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg'
                 };
-                this.state.set(STATE_LAST_BLOGPOST_SCHEMA, this.blogpostSchema);
+                this.state.set(STATE_LAST_BLOGPOST_SCHEMA, <object>this.blogpostSchema);
             });
         }
     }
