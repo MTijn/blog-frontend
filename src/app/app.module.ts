@@ -12,6 +12,7 @@ import {NgxJsonLdModule} from '@ngx-lite/json-ld';
 import {OAuthModule} from 'angular-oauth2-oidc';
 import {environment} from '../environments/environment';
 import {DetailComponent} from './component/detail/detail.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,7 @@ import {DetailComponent} from './component/detail/detail.component';
         DetailComponent
     ],
     imports: [
-        BrowserModule.withServerTransition({appId: 'blog'}),
+        CommonModule,
         HttpClientModule,
         AppRoutingModule,
         MDBBootstrapModule.forRoot(),
