@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
-import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {HomeComponent} from './component/home/home.component';
@@ -21,7 +20,7 @@ import {AppRoutingModule} from './app.routing';
         DetailComponent
     ],
     imports: [
-        BrowserModule.withServerTransition({appId: 'my-app'}),
+        BrowserModule.withServerTransition({appId: 'blog'}),
         HttpClientModule,
         AppRoutingModule,
         OAuthModule.forRoot({
