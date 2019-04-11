@@ -4,13 +4,15 @@ import {ModuleMapLoaderModule} from '@nguniversal/module-map-ngfactory-loader';
 
 import {AppModule} from './app.module';
 import {AppComponent} from './app.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
     imports: [
-        // The AppServerModule should import your AppModule followed
-        // by the ServerModule from @angular/platform-server.
+        BrowserModule.withServerTransition({appId: 'blog'}),
         AppModule,
         ServerModule,
+        NoopAnimationsModule,
         ModuleMapLoaderModule,
         ServerTransferStateModule,
     ],
