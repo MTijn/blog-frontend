@@ -3617,6 +3617,13 @@ neo-async@^2.5.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.1.tgz#acb909e327b1e87ec9ef15f41b8a269512ad41ee"
 
+ngx-json-ld@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/ngx-json-ld/-/ngx-json-ld-0.3.1.tgz#9213153a05515a7279116927c9e8e1865f99501b"
+  integrity sha512-xZsUykSM+vqrr+CrNlWDvvUS/t8t97Jk/dlXSP0nXMoixDJO7reDWdpKGTY2wbuOE991MBoExw/tW1X+dvQ8cg==
+  dependencies:
+    tslib "^1.7.1"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
@@ -5500,7 +5507,7 @@ ts-loader@^4.2.0:
     micromatch "^3.1.4"
     semver "^5.0.1"
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
 
