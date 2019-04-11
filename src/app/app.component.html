@@ -1,10 +1,9 @@
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top primary-color-dark">
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
         <a class="navbar-brand" routerLink="">
             <h1 class="sitename">MartijnKlene.nl</h1>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -15,10 +14,10 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item" *ngIf="oauthService.getIdentityClaims()">
-                    <a class="nav-link" id="logoutButton" (click)="logoff()">Logout</a>
+                    <a class="nav-link" id="logoutButton" href="javascript:void(0)" (click)="logoff()">Logout</a>
                 </li>
                 <li class="nav-item" *ngIf="oauthService.getIdentityClaims() == null">
-                    <a class="nav-link" id="loginButton" (click)="login()">Login</a>
+                    <a class="nav-link" id="loginButton" href="javascript:void(0)" (click)="login()">Login</a>
                 </li>
             </ul>
         </div>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {makeStateKey, TransferState} from '@angular/platform-browser';
-import {BlogPost} from '../entity/BlogPost';
-import {BlogService} from '../service/blog.service';
+import {BlogPost} from '../../entity/BlogPost';
+import {BlogService} from '../../service/blog.service';
 
 const STATE_LAST_BLOGPOST = makeStateKey('lastBlogPost');
 const STATE_LAST_BLOGPOST_SCHEMA = makeStateKey('lastBlogPostSchema');
