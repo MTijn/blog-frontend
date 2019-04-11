@@ -1,44 +1,37 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
+import {JwksValidationHandler, OAuthService} from 'angular-oauth2-oidc';
+import {authConfig} from './config/auth.config';
 
 @Component({
-  selector: 'app-root',
-  template: `
-  <div class="app-container">
-    <h1>Angular Universal Demo utilizing Angular & Angular CLI</h1>
-    <nav class="nav-links">
-      <a routerLink="/">Home</a>
-      <a routerLink="/lazy">Lazy-loaded Route</a>
-      <a routerLink="/lazy/nested">Nested Routes work too</a>
-    </nav>
-    <div class="router-container">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-  `,
-  styles: [`
-    :host {
-      background: #f1f1f1;
-      font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-      font-display: swap;
-    }
-    .nav-links {
-      background: #008591;
-    }
-    .nav-links a {
-      color: #fff;
-      display: inline-block;
-      padding: 1rem;
-      margin-right: 3rem;
-      text-decoration: none;
-      font-weight: bold;
-      letter-spacing: 0.1rem;
-    }
-    .router-container {
-      border: 0.5rem #00afc4 solid;
-      padding: 2rem;
-    }
-  `]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
 })
 export class AppComponent {
+    public title: string;
 
+    constructor(public oauthService: OAuthService) {
+        this.title = 'app';
+        this.configureOathSettings();
+    }
+
+    schema = {
+        '@context': 'http://schema.org',
+        '@type': 'WebSite',
+        'name': 'MartijnKlene.nl',
+        'url': 'https://martijnklene.nl'
+    };
+
+    private configureOathSettings() {
+        this.oauthService.configure(authConfig);
+        this.oauthService.tokenValidationHandler = new JwksValidationHandler();
+        this.oauthService.loadDiscoveryDocumentAndTryLogin();
+    }
+
+    public login() {
+        this.oauthService.initImplicitFlow();
+    }
+
+    public logoff() {
+        this.oauthService.logOut();
+    }
 }
