@@ -4,8 +4,8 @@ COPY . /app
 WORKDIR /app
 RUN npm install
 RUN npm rebuild node-sass --force
-RUN npm run build:client-and-server-bundles
-RUN npm run build:ssr
+RUN npm run build:prod
+RUN npm run server
 
 FROM node:10.15.1-alpine
 
@@ -21,4 +21,4 @@ COPY --from=buildContainer /app/dist /app/dist
 EXPOSE 4000
 
 # Serve the app
-CMD ["npm", "run", "serve:ssr"]
+CMD ["npm", "run", "server"]
