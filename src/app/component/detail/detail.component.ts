@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {BlogPost} from '../../entity/BlogPost';
 
 @Component({
-    selector: 'detail',
+    selector: 'app-detail',
     templateUrl: 'detail.component.html'
 })
 export class DetailComponent implements OnInit {

@@ -6,7 +6,7 @@ import {authConfig} from './config/auth.config';
     selector: 'app-root',
     templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
     public title: string;
     public schema: object;
     public identityClaims: object;

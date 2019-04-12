@@ -3,7 +3,7 @@ import {BlogPost} from '../../entity/BlogPost';
 import {BlogService} from '../../service/BlogService';
 
 @Component({
-    selector: 'archive',
+    selector: 'app-archive',
     templateUrl: 'archive.component.html'
 })
 export class ArchiveComponent implements OnInit {
