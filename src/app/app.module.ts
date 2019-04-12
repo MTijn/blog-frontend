@@ -9,8 +9,6 @@ import {AppRoutingModule} from './app.routing';
 
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxJsonLdModule} from '@ngx-lite/json-ld';
-import {OAuthModule} from 'angular-oauth2-oidc';
-import {environment} from '../environments/environment';
 import {DetailComponent} from './component/detail/detail.component';
 import {CommonModule} from '@angular/common';
 
@@ -26,13 +24,7 @@ import {CommonModule} from '@angular/common';
         HttpClientModule,
         AppRoutingModule,
         MDBBootstrapModule.forRoot(),
-        NgxJsonLdModule,
-        OAuthModule.forRoot({
-            resourceServer: {
-                allowedUrls: [environment.api_url],
-                sendAccessToken: true
-            }
-        })
+        NgxJsonLdModule
     ],
     schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
     providers: [],
