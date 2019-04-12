@@ -6,7 +6,7 @@
         "start": "ng serve",
         "build": "ng build",
         "test": "ng test --watch=false --browsers=ChromeHeadlessCI",
-        "lint": "ng lint",
+        "lint": "ng lint  --format checkstyle",
         "e2e": "ng e2e",
         "build:server:prod": "ng run blog-frontend:server && webpack --config webpack.server.config.js --progress --colors",
         "build:browser:prod": "ng build --prod",
