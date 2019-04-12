@@ -31,9 +31,6 @@ jobs:
           name: angular-build
           command: npm build --no-progress
       - run:
-          name: angular-test
-          command: npm run test
-      - run:
           name: angular-lint
           command: npm run lint --format junit -o tslint.xml
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
