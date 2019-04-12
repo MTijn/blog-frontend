@@ -7,7 +7,7 @@
     "ng": "ng",
     "build": "ng build --prod",
     "start": "ng serve",
-    "test": "ng test --watch=false --browsers=ChromeHeadlessCI",
+    "test": "ng test --watch=false --progress=false --browsers=ChromeHeadlessCI",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "e2e": "ng e2e",
     "start:fr": "ng serve --configuration=fr",

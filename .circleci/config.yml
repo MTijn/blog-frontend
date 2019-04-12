@@ -32,7 +32,7 @@ jobs:
           command: npm build --no-progress
       - run:
           name: angular-test
-          command: npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
+          command: npm run test
       - run:
           name: e2e-test
           command: npm run e2e -- --protractor-config=./e2e/protractor.conf.js
