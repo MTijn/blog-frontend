@@ -5,7 +5,6 @@ WORKDIR /app
 RUN npm install
 RUN npm rebuild node-sass --force
 RUN npm run build:prod
-RUN npm run server
 
 FROM node:10.15.1-alpine
 
