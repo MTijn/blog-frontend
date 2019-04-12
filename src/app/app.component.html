@@ -13,10 +13,10 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item" *ngIf="oauthService.getIdentityClaims()">
+                <li class="nav-item" *ngIf="identityClaims">
                     <a class="nav-link" id="logoutButton" href="javascript:void(0)" (click)="logoff()">Logout</a>
                 </li>
-                <li class="nav-item" *ngIf="oauthService.getIdentityClaims() == null">
+                <li class="nav-item" *ngIf="identityClaims == null">
                     <a class="nav-link" id="loginButton" href="javascript:void(0)" (click)="login()">Login</a>
                 </li>
             </ul>

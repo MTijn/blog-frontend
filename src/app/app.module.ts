@@ -26,12 +26,6 @@ import {NgtUniversalModule} from '@ng-toolkit/universal';
         NgtUniversalModule,
         AppRoutingModule,
         HttpClientModule,
-        OAuthModule.forRoot({
-            resourceServer: {
-                allowedUrls: [environment.api_url],
-                sendAccessToken: true
-            }
-        }),
         NgxJsonLdModule,
         TransferHttpCacheModule,
     ],

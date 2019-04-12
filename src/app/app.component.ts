@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {JwksValidationHandler, OAuthService} from 'angular-oauth2-oidc';
 import {authConfig} from './config/auth.config';
 
@@ -6,32 +6,20 @@ import {authConfig} from './config/auth.config';
     selector: 'app-root',
     templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
     public title: string;
+    public schema: object;
+    public identityClaims: object;
 
-    constructor(public oauthService: OAuthService) {
-        this.title = 'app';
-        this.configureOathSettings();
+    constructor() {
     }
 
-    schema = {
-        '@context': 'http://schema.org',
-        '@type': 'WebSite',
-        'name': 'MartijnKlene.nl',
-        'url': 'https://martijnklene.nl'
-    };
-
-    private configureOathSettings() {
-        this.oauthService.configure(authConfig);
-        this.oauthService.tokenValidationHandler = new JwksValidationHandler();
-        this.oauthService.loadDiscoveryDocumentAndTryLogin();
-    }
-
-    public login() {
-        this.oauthService.initImplicitFlow();
-    }
-
-    public logoff() {
-        this.oauthService.logOut();
+    ngOnInit(): void {
+        this.schema = {
+            '@context': 'http://schema.org',
+            '@type': 'WebSite',
+            'name': 'MartijnKlene.nl',
+            'url': 'https://martijnklene.nl'
+        };
     }
 }

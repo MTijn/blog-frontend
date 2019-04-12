@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BlogPost} from '../../entity/BlogPost';
-import {BlogService} from '../../service/blog.service';
+import {BlogService} from '../../service/BlogService';
 
 @Component({
     selector: 'archive',
