@@ -1,9 +1,8 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-
-import {AppComponent} from './app.component';
+import {AppComponent} from './main/app.component';
 import {HomeComponent} from './home/home.component';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {RouterModule} from '@angular/router';
 import {TransferHttpCacheModule} from '@nguniversal/common';
 
 @NgModule({
@@ -12,11 +11,9 @@ import {TransferHttpCacheModule} from '@nguniversal/common';
     HomeComponent,
   ],
   imports: [
-    BrowserModule.withServerTransition({appId: 'my-app'}),
+    BrowserModule.withServerTransition({appId: 'blog'}),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full'},
-      { path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule'},
-      { path: 'lazy/nested', loadChildren: './lazy/lazy.module#LazyModule'}
     ]),
     TransferHttpCacheModule,
   ],
