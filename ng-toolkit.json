@@ -1,0 +1,7 @@
+{
+  "universal": {
+    "project": "blog-frontend",
+    "skipInstall": false,
+    "directory": "."
+  }
+}
