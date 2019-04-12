@@ -20,7 +20,6 @@ export class HttpInterceptorService implements HttpInterceptor {
         const key: StateKey<string> = makeStateKey<string>(request.url);
 
         console.log(this.platformId);
-        console.log(isPlatformServer(this.platformId));
         if (isPlatformServer(this.platformId)) {
             return next.handle(request).pipe(tap((event) => {
                 this.transferState.set(key, (<HttpResponse<any>> event).body);
