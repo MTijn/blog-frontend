@@ -2,20 +2,12 @@ body > app-root > .container {
   padding-top: 100px;
 }
 
-body {
-  margin-bottom: 60px;
+main > .container {
+  padding-top: 60px;
 }
 
 h1.sitename {
   font-size: 2rem;
-}
-
-footer {
-  position: fixed;
-  bottom: 0;
-  height: 60px;
-  width: 100%;
-  padding-top: 10px;
 }
 
 .fa {
