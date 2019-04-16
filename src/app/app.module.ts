@@ -7,6 +7,7 @@ import {HomeComponent} from './component/home/HomeComponent';
 import {HttpClientModule} from '@angular/common/http';
 import {ArchiveComponent} from './component/archive/ArchiveComponent';
 import {DetailComponent} from './component/detail/DetailComponent';
+import {NgxJsonLdModule} from '@ngx-lite/json-ld';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import {DetailComponent} from './component/detail/DetailComponent';
         ]),
         HttpClientModule,
         TransferHttpCacheModule,
+        NgxJsonLdModule
     ],
     providers: [],
     bootstrap: [AppComponent]

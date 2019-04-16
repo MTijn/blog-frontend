@@ -5,5 +5,10 @@ import {Component} from '@angular/core';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-
+    schema = {
+        '@context': 'http://schema.org',
+        '@type': 'WebSite',
+        'name': 'MartijnKlene.nl',
+        'url': 'https://martijnklene.nl'
+    };
 }
