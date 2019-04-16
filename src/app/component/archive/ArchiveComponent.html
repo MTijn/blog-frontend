@@ -1,0 +1,10 @@
+<div class="row blog-post" *ngFor="let blogPost of blogPosts | async">
+    <article class="col-12">
+        <header>
+            <h1 class="title">
+                <a [routerLink]="['/detail', blogPost.id]">{{blogPost.title}}</a>
+            </h1>
+            <span class="meta">Published at: {{blogPost.publishedAt | date: 'fullDate'}}</span>
+        </header>
+    </article>
+</div>
