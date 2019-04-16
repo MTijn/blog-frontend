@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-universal-demo": {
+    "blog-frontend": {
       "root": "",
       "projectType": "application",
       "architect": {
@@ -61,25 +61,25 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-universal-demo:build"
+            "browserTarget": "blog-frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-universal-demo:build:production"
+              "browserTarget": "blog-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-universal-demo:build"
+            "browserTarget": "blog-frontend:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
-            "karmaConfig": "./karma.conf.js",
+            "karmaConfig": "./src/karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
@@ -133,7 +133,7 @@
         }
       }
     },
-    "ng-universal-demo-e2e": {
+    "blog-frontend-e2e": {
       "root": "",
       "projectType": "application",
       "cli": {},
@@ -143,7 +143,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "ng-universal-demo:serve"
+            "devServerTarget": "blog-frontend:serve"
           }
         },
         "lint": {
