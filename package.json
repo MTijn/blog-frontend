@@ -11,18 +11,18 @@
     ],
     "scripts": {
         "ng": "ng",
+        "build": "ng build --prod",
         "start": "ng serve",
-        "build": "ng build",
-        "lint": "ng lint blog-frontend",
-        "build:client-and-server-bundles": "ng build --prod && ng run blog-frontend:server:production",
-        "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
-        "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
-        "compile:server": "tsc -p server.tsconfig.json",
-        "generate:prerender": "cd dist && node prerender",
-        "serve:prerender": "cd dist/browser && http-server",
-        "serve:ssr": "node dist/server",
         "test": "ng test --watch=false --progress=false --browsers=ChromeHeadlessCI",
-        "e2e": "ng e2e"
+        "lint": "tslint ./src/**/*.ts -t verbose",
+        "e2e": "ng e2e",
+        "start:fr": "ng serve --configuration=fr",
+        "build:fr": "ng build --configuration=production-fr",
+        "extract": "ng xi18n --output-path=locale",
+        "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
+        "serve:ssr": "node dist/server.js",
+        "build:client-and-server-bundles": "ng build --prod && ng run blog-frontend:server",
+        "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
     },
     "private": true,
     "dependencies": {
