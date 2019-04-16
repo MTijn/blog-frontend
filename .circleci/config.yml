@@ -32,7 +32,7 @@ jobs:
           command: npm build --no-progress
       - run:
           name: angular-lint
-          command: npm run lint --format junit -o tslint.xml
+          command: npm run lint
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker image build -t mtijnnl/blog-frontend:latest .
       - run: docker push mtijnnl/blog-frontend:latest
