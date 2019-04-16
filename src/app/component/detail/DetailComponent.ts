@@ -1,20 +1,28 @@
 import {Component, OnInit} from '@angular/core';
-import {BlogService} from '../../service/BlogService';
+import {ActivatedRoute} from '@angular/router';
 import {BlogPost} from '../../entity/BlogPost';
-import {Observable} from 'rxjs';
+import {BlogService} from '../../service/BlogService';
+import {Observable} from 'rxjs/internal/Observable';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'HomeComponent.html'
+    selector: 'app-detail',
+    templateUrl: 'DetailComponent.html'
 })
-export class HomeComponent implements OnInit {
+export class DetailComponent implements OnInit {
     public blogPost: Observable<BlogPost>;
     public blogPostSchema: object;
 
-    public constructor(private blogService: BlogService) {}
+    constructor(
+        private blogService: BlogService,
+        private route: ActivatedRoute
+    ) {}
 
     ngOnInit(): void {
-        this.blogPost = this.blogService.fetchLastPublishedBlogPost();
+        this.getBlogPost();
+    }
+
+    getBlogPost(): void {
+        this.blogPost = this.blogService.fetchSingleBlogPostByIdentifier(this.route.snapshot.paramMap.get('id'));
         this.blogPost.toPromise().then(blogPost => {
                 this.blogPostSchema = {
                     '@context': 'http://schema.org',

@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top primary-color-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" routerLink="">
             <h1 class="sitename">MartijnKlene.nl</h1>
         </a>
@@ -13,21 +13,13 @@
                     <a class="nav-link" routerLink="archive">Archive</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li class="nav-item" *ngIf="oauthService.getIdentityClaims()">
-                <a class="nav-link" id="logoutButton" (click)="logoff()">Logout</a>
-              </li>
-              <li class="nav-item" *ngIf="oauthService.getIdentityClaims() == null">
-                <a class="nav-link" id="loginButton" (click)="login()">Login</a>
-              </li>
-            </ul>
         </div>
     </nav>
 </header>
 <div class="container">
     <router-outlet></router-outlet>
 </div>
-<footer class="page-footer primary-color-dark">
+<footer class="footer mt-auto py-3">
     <div class="container">
         <div class="row">
             <div class="col-3">

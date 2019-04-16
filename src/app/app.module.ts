@@ -1,18 +1,13 @@
+import {AppComponent} from './component/main/app.component';
+import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {APP_ID, CUSTOM_ELEMENTS_SCHEMA, Inject, NgModule, NO_ERRORS_SCHEMA, PLATFORM_ID} from '@angular/core';
-
-import {AppComponent} from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
+import {TransferHttpCacheModule} from '@nguniversal/common';
 import {HomeComponent} from './component/home/HomeComponent';
-import {ArchiveComponent} from './component/archive/archive.component';
-import {AppRoutingModule} from './app.routing';
-
-import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {HttpClientModule} from '@angular/common/http';
+import {ArchiveComponent} from './component/archive/ArchiveComponent';
+import {DetailComponent} from './component/detail/DetailComponent';
 import {NgxJsonLdModule} from '@ngx-lite/json-ld';
-import {OAuthModule} from 'angular-oauth2-oidc';
-import {environment} from '../environments/environment';
-import {DetailComponent} from './component/detail/detail.component';
-import {CommonModule} from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -22,25 +17,18 @@ import {CommonModule} from '@angular/common';
         DetailComponent
     ],
     imports: [
-        CommonModule,
+        BrowserModule.withServerTransition({appId: 'blog'}),
+        RouterModule.forRoot([
+            {path: '', component: HomeComponent, pathMatch: 'full'},
+            {path: 'archive', component: ArchiveComponent, pathMatch: 'full'},
+            {path: 'detail/:id', component: DetailComponent, pathMatch: 'full'}
+        ]),
         HttpClientModule,
-        AppRoutingModule,
-        MDBBootstrapModule.forRoot(),
-        NgxJsonLdModule,
-        OAuthModule.forRoot({
-            resourceServer: {
-                allowedUrls: [environment.api_url],
-                sendAccessToken: true
-            }
-        })
+        TransferHttpCacheModule,
+        NgxJsonLdModule
     ],
-    schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
     providers: [],
+    bootstrap: [AppComponent]
 })
-
 export class AppModule {
-    constructor(
-        @Inject(PLATFORM_ID) private platformId: Object,
-        @Inject(APP_ID) private appId: string) {
-    }
 }

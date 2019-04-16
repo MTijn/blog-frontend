@@ -1,6 +1,6 @@
-import {TestBed, inject} from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import {BlogService} from './blog.service';
+import {BlogService} from './BlogService';
 import {HttpClientModule} from '@angular/common/http';
 
 describe('BlogService', () => {
