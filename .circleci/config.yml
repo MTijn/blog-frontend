@@ -1,0 +1,45 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+    build:
+        docker:
+            - image: circleci/node:10.15.1-browsers
+              environment:
+                  CHROME_BIN: "/usr/bin/google-chrome"
+
+            working_directory: ~/repo
+
+            steps:
+                - setup_remote_docker
+                - checkout
+                - restore_cache:
+                      key: dependency-cache-{{ checksum "package-lock.json" }}
+                - run:
+                      name: sass-rebuild
+                      command: npm rebuild node-sass
+                - run:
+                      name: install-dependencies
+                      command: npm install
+                - save_cache:
+                      key: dependency-cache-{{ checksum "package-lock.json" }}
+                      paths:
+                          - ./node_modules
+                - run:
+                      name: angular-build
+                      command: npm build --no-progress
+                - run:
+                      name: angular-lint
+                      command: npm run lint --format junit -o tslint.xml
+                - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+                - run: docker image build -t mtijnnl/blog-frontend:latest .
+                - run: docker push mtijnnl/blog-frontend:latest
+
+    workflows:
+        version: 2
+        build:
+            jobs:
+                - build:
+                      context: docker
