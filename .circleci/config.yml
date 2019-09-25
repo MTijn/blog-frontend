@@ -36,6 +36,9 @@ jobs:
           name: angular-lint
           command: npm run lint
       - run:
+          name: karma-tests
+          command: npm run test
+      - run:
           name: e2e-tests
           command: npm run e2e
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
