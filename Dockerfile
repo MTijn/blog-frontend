@@ -1,4 +1,4 @@
-FROM node:10.15.1-alpine as buildContainer
+FROM node:10.16.3-alpine as buildContainer
 
 COPY . /app
 WORKDIR /app
