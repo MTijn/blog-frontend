@@ -13,7 +13,7 @@
         "ng": "ng",
         "build": "ng build --prod",
         "start": "ng serve",
-        "test": "ng test --watch=false --progress=false --browsers=ChromeHeadlessCI",
+        "test": "npm run env -s && ng test",
         "lint": "tslint ./src/**/*.ts -t verbose",
         "e2e": "ng e2e",
         "start:fr": "ng serve --configuration=fr",
@@ -50,7 +50,7 @@
         "zone.js": "^0.9.0"
     },
     "devDependencies": {
-        "@angular/cli": "^7.3.1",
+        "@angular/cli": "^8.3.5",
         "@angular/compiler-cli": "^7.2.12",
         "@angular/platform-server": "^7.2.12",
         "@types/jasmine": "^3.3.12",
