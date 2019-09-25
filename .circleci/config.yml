@@ -37,7 +37,7 @@ jobs:
           command: npm run lint
       - run:
           name: karma-tests
-          command: npm run test
+          command: npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
       - run:
           name: e2e-tests
           command: npm run e2e
