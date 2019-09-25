@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {BlogPost} from '../../entity/BlogPost';
 import {BlogService} from '../../service/BlogService';
 import {Observable} from 'rxjs/internal/Observable';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-detail',
@@ -14,7 +15,8 @@ export class DetailComponent implements OnInit {
 
     constructor(
         private blogService: BlogService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private titleService: Title
     ) {}
 
     ngOnInit(): void {
@@ -24,6 +26,7 @@ export class DetailComponent implements OnInit {
     getBlogPost(): void {
         this.blogPost = this.blogService.fetchSingleBlogPostByIdentifier(this.route.snapshot.paramMap.get('id'));
         this.blogPost.toPromise().then(blogPost => {
+                this.titleService.setTitle('MartijnKlene.nl | ' + blogPost.title);
                 this.blogPostSchema = {
                     '@context': 'http://schema.org',
                     '@type': 'BlogPosting',
