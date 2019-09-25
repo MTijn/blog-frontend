@@ -35,6 +35,9 @@ jobs:
       - run:
           name: angular-lint
           command: npm run lint
+      - run:
+          name: e2e-tests
+          command: npm run e2e
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker image build -t mtijnnl/blog-frontend:latest .
       - run: docker push mtijnnl/blog-frontend:latest
