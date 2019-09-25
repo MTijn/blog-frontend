@@ -16,7 +16,9 @@ jobs:
       - setup_remote_docker
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
       - run:
           name: sass-rebuild
           command: npm rebuild node-sass
@@ -24,9 +26,9 @@ jobs:
           name: install-dependencies
           command: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
           paths:
-            - ./node_modules
+            - node_modules
       - run:
           name: angular-build
           command: npm run build --no-progress
