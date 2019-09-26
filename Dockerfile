@@ -7,7 +7,7 @@ RUN npm rebuild node-sass --force
 RUN npm run build:client-and-server-bundles
 RUN npm run build:ssr
 
-FROM node:10.15.1-alpine
+FROM node:10.16.3-alpine
 
 WORKDIR /app
 # Copy dependency definitions
