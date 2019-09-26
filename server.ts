@@ -2,7 +2,7 @@
 import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 
-import {enableProdMode} from '@angular/core';
+import {enableProdMode, ValueProvider} from '@angular/core';
 
 import * as express from 'express';
 import {join} from 'path';
@@ -10,6 +10,7 @@ import {join} from 'path';
 import {ngExpressEngine} from '@nguniversal/express-engine';
 // Import module map for lazy loading
 import {provideModuleMap} from '@nguniversal/module-map-ngfactory-loader';
+import {REQUEST, RESPONSE} from '@nguniversal/express-engine/tokens';
 
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
@@ -40,7 +41,23 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser'), {
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
-    res.render('index', {req});
+    res.render(
+        'index',
+        {
+            req: req,
+            res: res,
+            providers: [
+                {
+                    provide: REQUEST,
+                    useValue: req,
+                },
+                {
+                    provide: RESPONSE,
+                    useValue: res,
+                }
+            ]
+        }
+    );
 });
 
 // Start up the Node server
