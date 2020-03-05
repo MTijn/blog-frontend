@@ -1,0 +1,18 @@
+version: "3.6"
+services:
+  web:
+    image: mtijnnl/blog-frontend:latest
+    networks:
+      - traefik_web
+    deploy:
+      labels:
+        traefik.enable: "true"
+        traefik.portainer.port: "4000"
+        traefik.docker.network: "traefik_web"
+        traefik.frontend.rule: "Host:martijnklene.nl,www.martijnklene.nl"
+        traefik.frontend.entryPoints: "http,https"
+        traefik.frontend.redirect.entryPoint: "https"
+        
+networks:
+  traefik_web:
+    external: true
