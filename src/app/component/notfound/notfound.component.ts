@@ -8,9 +8,9 @@ import {NotFoundService} from '../../service/NotFoundService';
 export class NotFoundComponent implements OnInit {
     public status: { code: number; message: string };
 
-    constructor(private _notFoundService: NotFoundService) {}
+    constructor(private notFoundService: NotFoundService) {}
 
     ngOnInit(): void {
-        this._notFoundService.setStatus(404, 'Not Found');
+        this.notFoundService.setStatus(404, 'Not Found');
     }
 }

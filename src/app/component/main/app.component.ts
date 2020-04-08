@@ -8,7 +8,7 @@ export class AppComponent {
     schema = {
         '@context': 'http://schema.org',
         '@type': 'WebSite',
-        'name': 'MartijnKlene.nl',
-        'url': 'https://martijnklene.nl'
+        name: 'MartijnKlene.nl',
+        url: 'https://martijnklene.nl'
     };
 }
