@@ -33,15 +33,15 @@ jobs:
           name: e2e-tests
           command: npm run e2e
   deploy:
-      docker:
-        - image: circleci/node:13
-      working_directory: ~/repo
-      steps:
-        - setup_remote_docker
-        - checkout
-        - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-        - run: docker image build -t mtijnnl/blog-frontend:CIRCLE_TAG .
-        - run: docker push mtijnnl/blog-frontend:CIRCLE_TAG
+    docker:
+      - image: circleci/node:13
+    working_directory: ~/repo
+    steps:
+      - setup_remote_docker
+      - checkout
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker image build -t mtijnnl/blog-frontend:CIRCLE_TAG .
+      - run: docker push mtijnnl/blog-frontend:CIRCLE_TAG
 
 workflows:
   version: 2
@@ -51,8 +51,8 @@ workflows:
   deploy:
     jobs:
       - deploy:
-        filters:
-          tags:
-            only: /\d+(\.\d+){2}(-(alpha|beta)(\d+)?)?/
-          branches:
-            ignore: /.*/
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
