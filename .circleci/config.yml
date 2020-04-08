@@ -1,39 +1,39 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node:13-browsers
-        environment:
-          CHROME_BIN: "/usr/bin/google-chrome"
-        working_directory: ~/repo
-        steps:
-        - setup_remote_docker
-        - checkout
-        - restore_cache:
-            keys:
-              - v1-dependencies-{{ checksum "package-lock.json" }}
-              - v1-dependencies-
-        - run:
-            name: install-dependencies
-            command: npm install
-        - save_cache:
-            key: v1-dependencies-{{ checksum "package-lock.json" }}
-            paths:
-              - node_modules
-        - run:
-            name: angular-build
-            command: npm run build --no-progress
-        - run:
-            name: angular-lint
-            command: npm run lint
-        - run:
-            name: karma-tests
-            command: npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
-        - run:
-            name: e2e-tests
-            command: npm run e2e
+    steps:
+    - image: circleci/node:13-browsers
+      environment:
+        CHROME_BIN: "/usr/bin/google-chrome"
+      working_directory: ~/repo
+      steps:
+      - setup_remote_docker
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+      - run:
+          name: install-dependencies
+          command: npm install
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: angular-build
+          command: npm run build --no-progress
+      - run:
+          name: angular-lint
+          command: npm run lint
+      - run:
+          name: karma-tests
+          command: npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
+      - run:
+          name: e2e-tests
+          command: npm run e2e
   deploy:
-    docker:
+    steps:
       - image: circleci/node:13
         depends: build
         working_directory: ~/repo
