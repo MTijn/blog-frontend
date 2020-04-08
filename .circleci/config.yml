@@ -33,13 +33,12 @@ jobs:
           name: e2e-tests
           command: npm run e2e
   deploy:
-    steps:
       docker:
         - image: circleci/node:13
       working_directory: ~/repo
       steps:
-        - checkout
         - setup_remote_docker
+        - checkout
         - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
         - run: docker image build -t mtijnnl/blog-frontend:latest .
         - run: docker push mtijnnl/blog-frontend:latest
