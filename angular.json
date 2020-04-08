@@ -30,9 +30,13 @@
             "styles": [
               "src/styles.scss",
               "src/assets/main.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.css"
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/font-awesome/scss/font-awesome.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -96,9 +100,13 @@
             "styles": [
               "src/styles.scss",
               "src/assets/main.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.css"
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/font-awesome/scss/font-awesome.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           }
         },
         "lint": {
@@ -174,6 +182,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "blog-frontend"
 }
