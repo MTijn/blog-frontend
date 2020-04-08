@@ -1,12 +1,12 @@
 version: 2
 jobs:
   build:
+    docker:
+      - image: circleci/node:13-browsers
+        environment:
+          CHROME_BIN: "/usr/bin/google-chrome"
+    working_directory: ~/repo
     steps:
-    - image: circleci/node:13-browsers
-      environment:
-        CHROME_BIN: "/usr/bin/google-chrome"
-      working_directory: ~/repo
-      steps:
       - setup_remote_docker
       - checkout
       - restore_cache:
@@ -34,15 +34,15 @@ jobs:
           command: npm run e2e
   deploy:
     steps:
-      - image: circleci/node:13
-        depends: build
-        working_directory: ~/repo
-        steps:
-          - checkout
-          - setup_remote_docker
-          - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-          - run: docker image build -t mtijnnl/blog-frontend:latest .
-          - run: docker push mtijnnl/blog-frontend:latest
+      docker:
+        - image: circleci/node:13
+      working_directory: ~/repo
+      steps:
+        - checkout
+        - setup_remote_docker
+        - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+        - run: docker image build -t mtijnnl/blog-frontend:latest .
+        - run: docker push mtijnnl/blog-frontend:latest
 
 workflows:
   version: 2
