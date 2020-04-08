@@ -51,6 +51,7 @@ workflows:
   deploy:
     jobs:
       - deploy:
+          context: docker
           filters:
             tags:
               only: /.*/
