@@ -34,7 +34,7 @@ jobs:
           command: npm run e2e
   deploy:
     docker:
-      - image: circleci/node:13
+      - image: circleci/node:14
     working_directory: ~/repo
     steps:
       - setup_remote_docker
