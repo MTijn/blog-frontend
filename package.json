@@ -12,7 +12,8 @@
     "serve:ssr": "node dist/server/main.js",
     "build:ssr": "ng build --prod && ng run blog-frontend:server:production && npm run webpack:server",
     "prerender": "ng run blog-frontend:prerender",
-    "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
+    "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
