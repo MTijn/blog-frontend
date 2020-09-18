@@ -3,24 +3,29 @@ import {BlogService} from '../../service/BlogService';
 import {BlogPost} from '../../entity/BlogPost';
 import {Observable} from 'rxjs';
 import {Title} from '@angular/platform-browser';
+import {JsonLdService} from 'ngx-seo';
+import {WebsiteLdJsonService} from '../../service/WebsiteLdJsonService';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'HomeComponent.html'
+    selector: 'app-home',
+    templateUrl: 'HomeComponent.html'
 })
 export class HomeComponent implements OnInit {
     public blogPost: Observable<BlogPost>;
-    public blogPostSchema: object;
 
-    public constructor(private blogService: BlogService, private title: Title) {}
+    public constructor(
+        private blogService: BlogService,
+        private title: Title,
+        private readonly jsonLdService: JsonLdService,
+        private websiteLdJsonService: WebsiteLdJsonService
+    ) {
+    }
 
     ngOnInit(): void {
         this.title.setTitle('MartijnKlene.nl | Home');
         this.blogPost = this.blogService.fetchLastPublishedBlogPost();
         this.blogPost.toPromise().then(blogPost => {
-                this.blogPostSchema = {
-                    '@context': 'http://schema.org',
-                    '@type': 'BlogPosting',
+                const ldData = this.jsonLdService.getObject('BlogPosting', {
                     headline: blogPost.title,
                     datePublished: blogPost.publishedAt,
                     keywords: blogPost.tags,
@@ -32,7 +37,8 @@ export class HomeComponent implements OnInit {
                         logo: 'https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg'
                     },
                     image: 'https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg'
-                };
+                });
+                this.jsonLdService.setData([this.websiteLdJsonService.provideWebsiteLdJsonData(), ldData]);
             }
         );
     }
