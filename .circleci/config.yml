@@ -20,6 +20,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
+      - run: mkdir ~/junit
       - run:
           name: angular-build
           command: npm run build --no-progress
@@ -29,9 +30,16 @@ jobs:
       - run:
           name: karma-tests
           command: npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
+          environment:
+            JUNIT_REPORT_PATH: ./junit/
+            JUNIT_REPORT_NAME: test-results.xml
       - run:
           name: e2e-tests
           command: npm run e2e
+      - store_test_results:
+          path: ./junit
+      - store_artifacts:
+          path: ./junit
   deploy:
     docker:
       - image: circleci/node:14
