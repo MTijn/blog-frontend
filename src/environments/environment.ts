@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://api.martijnklene.nl',
+  api_url: 'http://localhost:8080',
 };

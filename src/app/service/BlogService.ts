@@ -16,14 +16,14 @@ export class BlogService {
     }
 
     fetchLastPublishedBlogPost(): Observable<BlogPost> {
-        return this.httpClient.get<BlogPost>(environment.api_url + '/v1/blog/last');
+        return this.httpClient.get<BlogPost>(environment.api_url + '/v1/blog-posts/last');
     }
 
     fetchAllBlogPosts(): Observable<BlogPost[]> {
-        return this.httpClient.get<BlogPost[]>(environment.api_url + '/v1/blog/all');
+        return this.httpClient.get<BlogPost[]>(environment.api_url + '/v1/blog-posts');
     }
 
     fetchSingleBlogPostByIdentifier(identifier: string) {
-        return this.httpClient.get<BlogPost>(environment.api_url + '/v1/blog/' + identifier);
+        return this.httpClient.get<BlogPost>(environment.api_url + '/v1/blog-posts/' + identifier);
     }
 }

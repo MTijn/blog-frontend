@@ -4,7 +4,7 @@
             <h1 class="title">
                 <a [routerLink]="['/detail', blogPost.id]">{{blogPost.title}}</a>
             </h1>
-            <span class="meta">Published at: {{blogPost.publishedAt | date: 'fullDate'}}</span>
+            <span class="meta">Published at: {{blogPost.publishedAt | date: 'medium'}}</span>
         </header>
     </article>
 </div>
