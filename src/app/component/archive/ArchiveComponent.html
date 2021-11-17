@@ -1,10 +1,12 @@
-<div class="row blog-post" *ngFor="let blogPost of blogPosts | async">
-    <article class="col-12">
-        <header>
-            <h1 class="title">
-                <a [routerLink]="['/detail', blogPost.id]">{{blogPost.title}}</a>
-            </h1>
-            <span class="meta">Published at: {{blogPost.publishedAt | date: 'medium'}}</span>
-        </header>
-    </article>
+<div class="row blog-post">
+    <div class="list-group">
+        <article class="list-group-item" *ngFor="let blogPost of blogPosts | async">
+            <header>
+                <h1 class="title">
+                    <a [routerLink]="['/detail', blogPost.id]">{{blogPost.title}}</a>
+                </h1>
+                <span class="meta">Published at: {{blogPost.publishedAt | date: 'medium'}}</span>
+            </header>
+        </article>
+    </div>
 </div>
