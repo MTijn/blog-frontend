@@ -12,9 +12,10 @@
     "importHelpers": true,
     "target": "es2015",
     "lib": [
-      "es2018",
+      "es2020",
       "dom"
-    ]
+    ],
+    "useUnknownInCatchVariables": false
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
