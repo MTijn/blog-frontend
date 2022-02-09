@@ -9,6 +9,7 @@ jobs:
     steps:
       - setup_remote_docker:
           version: 19.03.13
+      - browser-tools/install-browser-tools
       - checkout
       - restore_cache:
           keys:
