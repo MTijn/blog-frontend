@@ -1,11 +1,11 @@
-FROM node:current-alpine3.13 as buildContainer
+FROM node:current-alpine3.15 as buildContainer
 
 COPY . /app
 WORKDIR /app
 RUN npm install
 RUN npm run build:ssr
 
-FROM node:current-alpine3.13
+FROM node:current-alpine3.15
 
 WORKDIR /app
 # Copy dependency definitions
