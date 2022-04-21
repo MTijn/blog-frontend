@@ -33,7 +33,7 @@ export class DetailComponent implements OnInit {
                 this.titleService.setTitle('MartijnKlene.nl | ' + blogPost.title);
                 const ldData = this.jsonLdService.getObject('BlogPosting',
                     {
-                        '@context': 'http://schema.org',
+                        '@context': 'https://schema.org',
                         '@type': 'BlogPosting',
                         headline: blogPost.title,
                         datePublished: blogPost.publishedAt,
