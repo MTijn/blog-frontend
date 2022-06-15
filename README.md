@@ -1,3 +1,3 @@
 # Blog frontend for my personal website
 
-Running in Angular 13 at the moment.
+Running in Angular 14 at the moment.
