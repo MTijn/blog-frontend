@@ -1,14 +1,13 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
 
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+const vuetify = createVuetify({
+    components,
+    directives,
+})
 
-if (environment.production) {
-  enableProdMode();
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
-});
+createApp(App).use(vuetify).use(router).mount('#app')
