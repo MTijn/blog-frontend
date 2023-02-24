@@ -1,8 +1,17 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <v-row>
+    <v-col cols="12" lg="10">
+      <v-sheet>
+        <h1>Test</h1>
+        <p>Dit is een test</p>
+      </v-sheet>
+    </v-col>
+    <v-col cols="12" sm="2">
+      <v-sheet rounded="lg" theme="dark">
+        <p>Door Martijn</p>
+      </v-sheet>
+    </v-col>
+  </v-row>
 </template>
 
 <script lang="ts">
