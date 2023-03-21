@@ -1,27 +1,22 @@
 <template>
-  <v-row>
-    <v-col cols="12" lg="10">
-      <v-sheet>
-        <h1>Test</h1>
-        <p>Dit is een test</p>
-      </v-sheet>
-    </v-col>
-    <v-col cols="12" sm="2">
-      <v-sheet rounded="lg" theme="dark">
-        <p>Door Martijn</p>
-      </v-sheet>
-    </v-col>
-  </v-row>
+  <div class="row">
+    <article class="col-12">
+      <header>
+        <h1 class="title">Test</h1>
+      </header>
+      <div class="row">
+        <div class="col-10">
+        </div>
+        <aside class="col-2">
+          <p>Published at: </p>
+        </aside>
+      </div>
+    </article>
+  </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
-@Options({
-  components: {
-    HelloWorld,
-  },
-})
 export default class HomeView extends Vue {}
 </script>
