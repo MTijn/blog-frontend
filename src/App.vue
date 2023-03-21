@@ -1,11 +1,29 @@
 <template>
+  <teleport to="head">
+    <component :is="'script'" type="application/ld+json">
+      {
+        "@context":"http://schema.org",
+        "@type":"Website",
+        "name":"MartijnKlene.nl",
+        "url":"https://martijnklene.nl"
+      }
+    </component>
+  </teleport>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
       <div class="container-fluid">
         <router-link active-class="active" class="navbar-brand" to="/">
           <h1>MartijnKlene.nl</h1>
         </router-link>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
