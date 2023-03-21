@@ -13,6 +13,6 @@ import BlogComponent from "@/components/BlogComponent.vue";
     BlogComponent
   }
 })
-export default class HomeView extends Vue {
+export default class DetailView extends Vue {
 }
 </script>
