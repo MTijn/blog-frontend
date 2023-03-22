@@ -1,16 +1,16 @@
 <template>
-  <div class="row">
-    <div class="list-group list-group-flush">
-      <article class="list-group-item" v-bind:key="blogPost.id" v-for="blogPost in blogPosts">
-        <header>
-          <h1>
-            <router-link :to="'detail/' + blogPost.id" id="detail">{{ blogPost.title }}</router-link>
-          </h1>
-          <span>Published at: {{ formatDate(blogPost.publishedAt) }}</span>
-        </header>
-      </article>
+    <div class="row">
+        <div class="list-group list-group-flush">
+            <article class="list-group-item" v-bind:key="blogPost.id" v-for="blogPost in blogPosts">
+                <header>
+                    <h1>
+                        <router-link :to="'detail/' + blogPost.id" id="detail">{{ blogPost.title }}</router-link>
+                    </h1>
+                    <span>Published at: {{ formatDate(blogPost.publishedAt) }}</span>
+                </header>
+            </article>
+        </div>
     </div>
-  </div>
 </template>
 
 <script lang="ts">
@@ -20,25 +20,25 @@ import ResponseData from "@/types/ResponseData";
 import moment from "moment";
 
 export default defineComponent({
-  name: "BlogPostListComponent",
-  data() {
-    return {
-      blogPosts: []
+    name: "BlogPostListComponent",
+    data() {
+        return {
+            blogPosts: []
+        }
+    },
+    mounted() {
+        BlogPostService.fetchAllBlogPosts()
+            .then((response: ResponseData) => {
+                this.blogPosts = response.data;
+            })
+    },
+    computed: {
+        formatDate() {
+            return (value: any) => {
+                return moment(value).toDate().toLocaleString()
+            }
+        }
     }
-  },
-  mounted() {
-    BlogPostService.fetchAllBlogPosts()
-        .then((response: ResponseData) => {
-          this.blogPosts = response.data;
-        })
-  },
-  computed: {
-    formatDate() {
-      return (value: any) => {
-        return moment(value).toDate().toLocaleString()
-      }
-    }
-  }
 });
 </script>
 
