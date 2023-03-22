@@ -1,14 +1,4 @@
 <template>
-  <teleport to="head">
-    <component :is="'script'" type="application/ld+json">
-      {
-        "@context":"http://schema.org",
-        "@type":"Website",
-        "name":"MartijnKlene.nl",
-        "url":"https://martijnklene.nl"
-      }
-    </component>
-  </teleport>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
       <div class="container-fluid">

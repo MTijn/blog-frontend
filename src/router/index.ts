@@ -15,8 +15,8 @@ const routes: Array<RouteRecordRaw> = [
     component: ArchiveView
   },
   {
-    path: '/details/:id',
-    name: 'details',
+    path: '/detail/:id',
+    name: 'detail',
     component: DetailView
   }
 ]

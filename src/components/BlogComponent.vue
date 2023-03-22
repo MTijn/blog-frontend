@@ -1,4 +1,31 @@
 <template>
+  <teleport to="head" v-if="blogPost.id">
+    <component :is="'script'" type="application/ld+json">
+      [
+        {
+          "@context":"http://schema.org",
+          "@type":"Website",
+          "name":"MartijnKlene.nl",
+          "url":"https://martijnklene.nl"
+        },
+        {
+          "@context":"https://schema.org",
+          "@type":"BlogPosting",
+          "headline":"{{ blogPost.title }}",
+          "datePublished":"{{ blogPost.publishedAt }}",
+          "keywords":"{{ blogPost.tags }}",
+          "url":"https://martijnklene.nl/detail/{{ blogPost.id }}",
+          "author":"{{ blogPost.author }}",
+          "publisher": {
+            "@type":"Organization",
+            "name":"Martijn Klene",
+            "logo":"https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg"
+          },
+          "image":"https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg"
+        }
+      ]
+    </component>
+  </teleport>
   <article class="col-12" v-if="blogPost.id">
     <header>
       <h1 class="title">{{ blogPost.title }}</h1>
