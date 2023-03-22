@@ -49,7 +49,7 @@ import ResponseData from "@/types/ResponseData";
 import moment from "moment";
 
 export default defineComponent({
-  name: "BlogComponent",
+  name: "BlogPostComponent",
   data() {
     return {
       blogPost: {} as BlogPost

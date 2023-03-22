@@ -1,5 +1,15 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <BlogPostListComponent />
 </template>
+<script lang="ts">
+import {Options, Vue} from 'vue-class-component';
+import BlogPostListComponent from "@/components/BlogPostListComponent.vue";
+
+@Options({
+  components: {
+    BlogPostListComponent
+  }
+})
+export default class ArchiveView extends Vue {
+}
+</script>

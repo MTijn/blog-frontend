@@ -1,16 +1,16 @@
 <template>
   <div class="row">
-    <BlogComponent />
+    <BlogPostComponent />
   </div>
 </template>
 
 <script lang="ts">
 import {Options, Vue} from 'vue-class-component';
-import BlogComponent from "@/components/BlogComponent.vue";
+import BlogPostComponent from "@/components/BlogPostComponent.vue";
 
 @Options({
   components: {
-    BlogComponent
+    BlogPostComponent
   }
 })
 export default class DetailView extends Vue {
