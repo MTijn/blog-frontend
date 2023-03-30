@@ -19,7 +19,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <router-link active-class="active" class="nav-link" to="/archive">Archive</router-link>
+                            <router-link
+                                active-class="active"
+                                class="nav-link"
+                                :to="{ name: 'archive'}"
+                            >
+                                Archive
+                            </router-link>
                         </li>
                     </ul>
                 </div>
