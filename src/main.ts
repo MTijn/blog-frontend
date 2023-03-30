@@ -1,14 +1,9 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {createApp} from 'vue'
+import App from './App.vue'
+import router from './router'
+import "bootstrap/dist/css/bootstrap.min.css"
+import "font-awesome/css/font-awesome.css"
+import "bootstrap/dist/js/bootstrap.min.js"
+import "@popperjs/core/dist/esm/popper.js"
 
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
-
-if (environment.production) {
-  enableProdMode();
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
-});
+createApp(App).use(router).mount('#app')
