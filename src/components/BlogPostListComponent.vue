@@ -10,7 +10,7 @@
                             {{ blogPost.title }}
                         </router-link>
                     </h1>
-                    <span>Published at: {{ formatDate(blogPost.publishedAt) }}</span>
+                    <p class="meta">Published at: {{ formatDate(blogPost.publishedAt) }}</p>
                 </header>
             </article>
         </div>
@@ -51,5 +51,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+.meta {
+    margin-bottom: 1.25rem;
+    color: #999999;
+}
 </style>
