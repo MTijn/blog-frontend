@@ -18,7 +18,7 @@
                     "author":"{{ blogPost.author }}",
                     "publisher": {
                         "@type":"Organization",
-                        "url": "https://martijnklene.nl"
+                        "url": "https://martijnklene.nl",
                         "name":"Martijn Klene",
                         "logo":"https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg"
                     },
