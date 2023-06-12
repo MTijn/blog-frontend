@@ -9,6 +9,9 @@ RUN npm install && npm run build
 
 # nginx state for serving content
 FROM nginx:alpine
+
+COPY docker/default.conf /etc/nginx/conf.d/
+
 # Set working directory to nginx asset directory
 WORKDIR /usr/share/nginx/html
 # Remove default nginx static assets

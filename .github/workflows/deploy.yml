@@ -16,7 +16,7 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           path: .
-          dockerfile: ./Dockerfile
+          dockerfile: ./docker/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: mtijnnl/blog-frontend
