@@ -1,4 +1,4 @@
-FROM node:current-alpine3.15 as buildContainer
+FROM node:current-alpine3.19 as buildContainer
 
 # Set working directory
 WORKDIR /app
