@@ -77,16 +77,5 @@ export const useBlogPostStore = defineStore('blogPost', {
         this.loading = false;
       }
     },
-
-    async fetchBlogPostsExcludingLatest() {
-      // First fetch the latest post
-      await this.fetchLastPublishedBlogPost();
-
-      // Then fetch all posts and filter out the latest one
-      const allPosts = await this.fetchAllBlogPosts();
-      this.blogPosts = allPosts.filter((post: BlogPost) => post.id !== this.latestBlogPost.id);
-
-      return this.blogPosts;
-    }
   }
 });
