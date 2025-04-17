@@ -1,5 +1,5 @@
 export default interface BlogPost {
-    id: null,
+    id: string,
     title: string,
     content: string,
     tags: string,

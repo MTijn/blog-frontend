@@ -27,17 +27,50 @@
             ]
         </component>
     </teleport>
-    <article class="col-12" v-if="blogPost.id">
-        <div class="row">
-            <div class="col-12">
-                <header>
-                    <h1 class="title">{{ blogPost.title }}</h1>
-                    <p class="meta">Published at: {{ formatDate(blogPost.publishedAt) }}</p>
-                </header>
+    <article class="blog-post-detail card" v-if="blogPost.id">
+        <div class="card-body">
+            <header class="blog-post-header mb-4">
+                <h1 class="blog-post-title mb-3">{{ blogPost.title }}</h1>
+                <div class="blog-post-meta">
+                    <span class="meta me-3">
+                        <i class="fa fa-calendar"></i> {{ formatDate(blogPost.publishedAt) }}
+                    </span>
+                    <span class="meta me-3">
+                        <i class="fa fa-user"></i> {{ blogPost.author }}
+                    </span>
+                </div>
+                <div class="tags mt-3" v-if="blogPost.tags">
+                    <span
+                        v-for="tag in getTags(blogPost.tags)"
+                        :key="tag"
+                        class="badge bg-secondary me-1"
+                    >
+                        {{ tag }}
+                    </span>
+                </div>
+            </header>
+            <div class="blog-post-divider mb-4"></div>
+            <div class="blog-post-content" v-html="blogPost.content"></div>
+
+            <div class="blog-post-footer mt-5 pt-4">
+                <div class="d-flex justify-content-between">
+                    <router-link to="/" class="btn btn-outline-primary">
+                        <i class="fa fa-arrow-left me-2"></i> Back to Posts
+                    </router-link>
+                    <div class="blog-post-share">
+                        <span class="me-2">Share:</span>
+                        <a href="#" class="social-icon me-2" title="Share on Twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon me-2" title="Share on Facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-icon" title="Share on LinkedIn">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12" v-html="blogPost.content"/>
         </div>
     </article>
 </template>
@@ -45,43 +78,103 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import BlogPost from "@/types/BlogPost";
-import BlogPostService from "@/service/BlogPostService";
-import ResponseData from "@/types/ResponseData";
 import moment from "moment";
+import { useBlogPostStore } from "@/stores/blogPost";
 
 export default defineComponent({
     name: "BlogPostComponent",
     data() {
         return {
-            blogPost: {} as BlogPost
+            blogPostStore: useBlogPostStore()
+        }
+    },
+    computed: {
+        blogPost() {
+            return this.$route.params.id ? this.blogPostStore.getCurrentBlogPost : this.blogPostStore.getLatestBlogPost;
+        },
+        formatDate() {
+            return (value: any) => {
+                return moment(value).format("MMMM D, YYYY")
+            }
         }
     },
     mounted() {
         if (this.$route.params.id != undefined) {
-            BlogPostService.fetchSingleBlogPostByIdentifier(this.$route.params.id.toString())
-                .then((response: ResponseData) => {
-                    this.blogPost = response.data;
-                })
+            this.blogPostStore.fetchBlogPostById(this.$route.params.id.toString());
         } else {
-            BlogPostService.fetchLastPublishedBlogPost()
-                .then((response: ResponseData) => {
-                    this.blogPost = response.data;
-                })
+            this.blogPostStore.fetchLastPublishedBlogPost();
         }
     },
-    computed: {
-        formatDate() {
-            return (value: any) => {
-                return moment(value).format("DD-MM-YYYY hh:mm:ss A")
-            }
+    methods: {
+        getTags(tags: string): string[] {
+            return tags.split(',').map(tag => tag.trim()).filter(tag => tag);
         }
-    },
+    }
 })
 </script>
 
 <style scoped>
-.meta {
-    margin-bottom: 1.25rem;
-    color: #999999;
+.blog-post-detail {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.blog-post-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.blog-post-meta {
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+.blog-post-meta i {
+    margin-right: 4px;
+}
+
+.blog-post-divider {
+    height: 1px;
+    background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.2), rgba(0,0,0,0.1));
+}
+
+.blog-post-content {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #333;
+}
+
+.blog-post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.blog-post-content h2,
+.blog-post-content h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.blog-post-footer {
+    border-top: 1px solid #e9ecef;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    color: #6c757d;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.social-icon:hover {
+    background-color: #0d6efd;
+    color: white;
 }
 </style>
