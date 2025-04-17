@@ -1,59 +1,58 @@
 <template>
-    <div class="blog-post-list">
-        <article
-            v-bind:key="blogPost.id"
-            v-for="blogPost in blogPosts"
-            class="card mb-4 blog-post-card"
-        >
-            <div class="card-body">
-                <header>
-                    <h2 class="card-title">
-                        <router-link
-                            :to="{ name: 'detail', params: { id: blogPost.id } }"
-                            class="blog-post-link"
-                        >
-                            {{ blogPost.title }}
-                        </router-link>
-                    </h2>
-                    <div class="meta-info mb-3">
-                        <span class="meta me-3">
-                            <i class="fa fa-calendar"></i> {{ formatDate(blogPost.publishedAt) }}
-                        </span>
-                        <span class="meta me-3">
-                            <i class="fa fa-user"></i> {{ blogPost.author }}
-                        </span>
-                    </div>
-                </header>
-                <div class="card-text mb-3" v-if="blogPost.content">
-                    <p>{{ getExcerpt(blogPost.content) }}</p>
-                </div>
-                <div class="tags" v-if="blogPost.tags">
-                    <span
-                        v-for="tag in getTags(blogPost.tags)"
-                        :key="tag"
-                        class="badge bg-secondary me-1"
-                    >
-                        {{ tag }}
-                    </span>
-                </div>
-                <div class="mt-3">
-                    <router-link
-                        :to="{ name: 'detail', params: { id: blogPost.id } }"
-                        class="btn btn-outline-primary btn-sm"
-                    >
-                        Read More
-                    </router-link>
-                </div>
-            </div>
-        </article>
-    </div>
+  <div class="blog-post-list">
+    <article
+      v-bind:key="blogPost.id"
+      v-for="blogPost in blogPosts"
+      class="card mb-4 blog-post-card"
+    >
+      <div class="card-body">
+        <header>
+          <h2 class="card-title">
+            <router-link
+              :to="{ name: 'detail', params: { id: blogPost.id } }"
+              class="blog-post-link"
+            >
+              {{ blogPost.title }}
+            </router-link>
+          </h2>
+          <div class="meta-info mb-3">
+            <span class="meta me-3">
+              <i class="fa fa-calendar"></i> {{ formatDate(blogPost.publishedAt) }}
+            </span>
+            <span class="meta me-3">
+              <i class="fa fa-user"></i> {{ blogPost.author }}
+            </span>
+          </div>
+        </header>
+        <div class="card-text mb-3" v-if="blogPost.content">
+          <p>{{ getExcerpt(blogPost.content) }}</p>
+        </div>
+        <div class="tags" v-if="blogPost.tags">
+          <span
+            v-for="tag in getTags(blogPost.tags)"
+            :key="tag"
+            class="badge bg-secondary me-1"
+          >
+            {{ tag }}
+          </span>
+        </div>
+        <div class="mt-3">
+          <router-link
+            :to="{ name: 'detail', params: { id: blogPost.id } }"
+            class="btn btn-outline-primary btn-sm"
+          >
+            Read More
+          </router-link>
+        </div>
+      </div>
+    </article>
+  </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
 import moment from "moment";
 import DetailView from "@/views/DetailView.vue";
-import BlogPost from "@/types/BlogPost";
 import { useBlogPostStore } from "@/stores/blogPost";
 
 export default defineComponent({

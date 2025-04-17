@@ -41,7 +41,7 @@ router.beforeEach((to, from, next) => {
     // See further down below for how we setup this data
     const title = to.meta.title
     if (title) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+         
         // @ts-ignore
         document.title = title
     }

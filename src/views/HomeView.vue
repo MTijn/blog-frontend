@@ -1,14 +1,14 @@
 <template>
-    <div>
-        <!-- Latest Blog Post Section -->
-        <div class="row mb-4">
-            <div class="col-12">
-                <BlogPostComponent />
-            </div>
-        </div>
-
-        <hr class="section-divider my-5">
+  <div>
+    <!-- Latest Blog Post Section -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <BlogPostComponent />
+      </div>
     </div>
+
+    <hr class="section-divider my-5">
+  </div>
 </template>
 
 <script lang="ts">

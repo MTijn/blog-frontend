@@ -1,81 +1,81 @@
 <template>
-    <div class="app-wrapper">
-        <header>
-            <nav class="navbar navbar-expand-md navbar-dark custom-header sticky-top">
-                <div class="container">
-                    <router-link active-class="active" class="navbar-brand" to="/">
-                        <h1 class="site-title">MartijnKlene.nl</h1>
-                    </router-link>
-                    <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <router-link
-                                    active-class="active"
-                                    class="nav-link"
-                                    :to="{ name: 'archive'}"
-                                >
-                                    <i class="fa fa-archive me-1"></i> Archive
-                                </router-link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+  <div class="app-wrapper">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark custom-header sticky-top">
+        <div class="container">
+          <router-link active-class="active" class="navbar-brand" to="/">
+            <h1 class="site-title">MartijnKlene.nl</h1>
+          </router-link>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <router-link
+                  active-class="active"
+                  class="nav-link"
+                  :to="{ name: 'archive'}"
+                >
+                  <i class="fa fa-archive me-1"></i> Archive
+                </router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-        <main class="main-content py-5">
-            <div class="container">
-                <router-view></router-view>
-            </div>
-        </main>
+    <main class="main-content py-5">
+      <div class="container">
+        <router-view></router-view>
+      </div>
+    </main>
 
-        <footer class="footer bg-light py-4 mt-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <h4 class="mb-3">Links</h4>
-                        <ul class="list-unstyled">
-                            <li><router-link to="/">Home</router-link></li>
-                            <li><router-link :to="{ name: 'archive'}">Archive</router-link></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <h4 class="mb-3">Connect</h4>
-                        <div class="social-links">
-                            <a href="https://github.com/martijnklene" target="_blank" class="me-2">
-                                <i class="fa fa-github"></i>
-                            </a>
-                            <a href="https://twitter.com/martijnklene" target="_blank" class="me-2">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                            <a href="https://linkedin.com/in/martijnklene" target="_blank" class="me-2">
-                                <i class="fa fa-linkedin"></i>
-                            </a>
-                            <a rel="me" href="https://phpc.social/@mtijn">
-                                <i class="fa fa-mastodon" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-12 text-center">
-                        <p class="mb-0">&copy; {{ new Date().getFullYear() }} Martijn Klene. All rights reserved.</p>
-                    </div>
-                </div>
+    <footer class="footer bg-light py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h4 class="mb-3">Links</h4>
+            <ul class="list-unstyled">
+              <li><router-link to="/">Home</router-link></li>
+              <li><router-link :to="{ name: 'archive'}">Archive</router-link></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h4 class="mb-3">Connect</h4>
+            <div class="social-links">
+              <a href="https://github.com/martijnklene" target="_blank" class="me-2">
+                <i class="fa fa-github"></i>
+              </a>
+              <a href="https://twitter.com/martijnklene" target="_blank" class="me-2">
+                <i class="fa fa-twitter"></i>
+              </a>
+              <a href="https://linkedin.com/in/martijnklene" target="_blank" class="me-2">
+                <i class="fa fa-linkedin"></i>
+              </a>
+              <a rel="me" href="https://phpc.social/@mtijn">
+                <i class="fa fa-mastodon" aria-hidden="true"></i>
+              </a>
             </div>
-        </footer>
-    </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-12 text-center">
+            <p class="mb-0">&copy; {{ new Date().getFullYear() }} Martijn Klene. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
 </template>
 
 <script setup lang="ts">

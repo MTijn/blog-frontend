@@ -1,83 +1,82 @@
 <template>
-    <teleport to="head" v-if="blogPost.id">
-        <component :is="'script'" type="application/ld+json">
-            [
-                {
-                    "@context":"http://schema.org",
-                    "@type":"Website",
-                    "name":"MartijnKlene.nl",
-                    "url":"https://martijnklene.nl"
-                },
-                {
-                    "@context":"https://schema.org",
-                    "@type":"BlogPosting",
-                    "headline":"{{ blogPost.title }}",
-                    "datePublished":"{{ blogPost.publishedAt }}",
-                    "keywords":"{{ blogPost.tags }}",
-                    "url":"https://martijnklene.nl/detail/{{ blogPost.id }}",
-                    "author":"{{ blogPost.author }}",
-                    "publisher": {
-                        "@type":"Organization",
-                        "url": "https://martijnklene.nl",
-                        "name":"Martijn Klene",
-                        "logo":"https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg"
-                    },
-                    "image":"https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg"
-                }
-            ]
-        </component>
-    </teleport>
-    <article class="blog-post-detail card" v-if="blogPost.id">
-        <div class="card-body">
-            <header class="blog-post-header mb-4">
-                <h1 class="blog-post-title mb-3">{{ blogPost.title }}</h1>
-                <div class="blog-post-meta">
-                    <span class="meta me-3">
-                        <i class="fa fa-calendar"></i> {{ formatDate(blogPost.publishedAt) }}
-                    </span>
-                    <span class="meta me-3">
-                        <i class="fa fa-user"></i> {{ blogPost.author }}
-                    </span>
-                </div>
-                <div class="tags mt-3" v-if="blogPost.tags">
-                    <span
-                        v-for="tag in getTags(blogPost.tags)"
-                        :key="tag"
-                        class="badge bg-secondary me-1"
-                    >
-                        {{ tag }}
-                    </span>
-                </div>
-            </header>
-            <div class="blog-post-divider mb-4"></div>
-            <div class="blog-post-content" v-html="blogPost.content"></div>
-
-            <div class="blog-post-footer mt-5 pt-4">
-                <div class="d-flex justify-content-between">
-                    <router-link to="/" class="btn btn-outline-primary">
-                        <i class="fa fa-arrow-left me-2"></i> Back to Posts
-                    </router-link>
-                    <div class="blog-post-share">
-                        <span class="me-2">Share:</span>
-                        <a href="#" class="social-icon me-2" title="Share on Twitter">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon me-2" title="Share on Facebook">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                        <a href="#" class="social-icon" title="Share on LinkedIn">
-                            <i class="fa fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+  <teleport to="head" v-if="blogPost.id">
+    <component :is="'script'" type="application/ld+json">
+      [
+      {
+      "@context":"http://schema.org",
+      "@type":"Website",
+      "name":"MartijnKlene.nl",
+      "url":"https://martijnklene.nl"
+      },
+      {
+      "@context":"https://schema.org",
+      "@type":"BlogPosting",
+      "headline":"{{ blogPost.title }}",
+      "datePublished":"{{ blogPost.publishedAt }}",
+      "keywords":"{{ blogPost.tags }}",
+      "url":"https://martijnklene.nl/detail/{{ blogPost.id }}",
+      "author":"{{ blogPost.author }}",
+      "publisher": {
+      "@type":"Organization",
+      "url": "https://martijnklene.nl",
+      "name":"Martijn Klene",
+      "logo":"https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg"
+      },
+      "image":"https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg"
+      }
+      ]
+    </component>
+  </teleport>
+  <article class="blog-post-detail card" v-if="blogPost.id">
+    <div class="card-body">
+      <header class="blog-post-header mb-4">
+        <h1 class="blog-post-title mb-3">{{ blogPost.title }}</h1>
+        <div class="blog-post-meta">
+          <span class="meta me-3">
+            <i class="fa fa-calendar"></i> {{ formatDate(blogPost.publishedAt) }}
+          </span>
+          <span class="meta me-3">
+            <i class="fa fa-user"></i> {{ blogPost.author }}
+          </span>
         </div>
-    </article>
+        <div class="tags mt-3" v-if="blogPost.tags">
+          <span
+            v-for="tag in getTags(blogPost.tags)"
+            :key="tag"
+            class="badge bg-secondary me-1"
+          >
+            {{ tag }}
+          </span>
+        </div>
+      </header>
+      <div class="blog-post-divider mb-4"></div>
+      <div class="blog-post-content" v-html="blogPost.content"></div>
+
+      <div class="blog-post-footer mt-5 pt-4">
+        <div class="d-flex justify-content-between">
+          <router-link to="/" class="btn btn-outline-primary">
+            <i class="fa fa-arrow-left me-2"></i> Back to Posts
+          </router-link>
+          <div class="blog-post-share">
+            <span class="me-2">Share:</span>
+            <a href="#" class="social-icon me-2" title="Share on Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon me-2" title="Share on Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+            <a href="#" class="social-icon" title="Share on LinkedIn">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import BlogPost from "@/types/BlogPost";
 import moment from "moment";
 import { useBlogPostStore } from "@/stores/blogPost";
 
