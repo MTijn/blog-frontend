@@ -1,30 +1,28 @@
 <template>
   <teleport to="head" v-if="blogPost.id">
     <component :is="'script'" type="application/ld+json">
-      [
-      {
-      "@context":"http://schema.org",
-      "@type":"Website",
-      "name":"MartijnKlene.nl",
-      "url":"https://martijnklene.nl"
+      [{
+        "@context":"http://schema.org",
+        "@type":"Website",
+        "name":"MartijnKlene.nl",
+        "url":"https://martijnklene.nl"
       },
       {
-      "@context":"https://schema.org",
-      "@type":"BlogPosting",
-      "headline":"{{ blogPost.title }}",
-      "datePublished":"{{ blogPost.publishedAt }}",
-      "keywords":"{{ blogPost.tags }}",
-      "url":"https://martijnklene.nl/detail/{{ blogPost.id }}",
-      "author":"{{ blogPost.author }}",
-      "publisher": {
-      "@type":"Organization",
-      "url": "https://martijnklene.nl",
-      "name":"Martijn Klene",
-      "logo":"https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg"
-      },
-      "image":"https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg"
-      }
-      ]
+        "@context":"https://schema.org",
+        "@type":"BlogPosting",
+        "headline":"{{ blogPost.title }}",
+        "datePublished":"{{ blogPost.publishedAt }}",
+        "keywords":"{{ blogPost.tags }}",
+        "url":"https://martijnklene.nl/detail/{{ blogPost.id }}",
+        "author":"{{ blogPost.author }}",
+        "publisher": {
+          "@type":"Organization",
+          "url": "https://martijnklene.nl",
+          "name":"Martijn Klene",
+          "logo":"https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg"
+        },
+        "image":"https://pbs.twimg.com/profile_images/998841428238262274/g71Qp9j2_400x400.jpg"
+      }]
     </component>
   </teleport>
   <article class="blog-post-detail card" v-if="blogPost.id">
@@ -52,23 +50,11 @@
       <div class="blog-post-divider mb-4"></div>
       <div class="blog-post-content" v-html="blogPost.content"></div>
 
-      <div class="blog-post-footer mt-5 pt-4">
+      <div class="blog-post-footer mt-5 pt-4" v-if="$route.params.id">
         <div class="d-flex justify-content-between">
-          <router-link to="/" class="btn btn-outline-primary">
-            <i class="fa fa-arrow-left me-2"></i> Back to Posts
+          <router-link to="/archive" class="btn btn-outline-dark">
+            <i class="fa fa-arrow-left me-2"></i>Back to Archive
           </router-link>
-          <div class="blog-post-share">
-            <span class="me-2">Share:</span>
-            <a href="#" class="social-icon me-2" title="Share on Twitter">
-              <i class="fa fa-twitter"></i>
-            </a>
-            <a href="#" class="social-icon me-2" title="Share on Facebook">
-              <i class="fa fa-facebook"></i>
-            </a>
-            <a href="#" class="social-icon" title="Share on LinkedIn">
-              <i class="fa fa-linkedin"></i>
-            </a>
-          </div>
         </div>
       </div>
     </div>

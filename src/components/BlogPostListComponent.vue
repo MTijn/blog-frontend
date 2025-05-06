@@ -77,7 +77,7 @@ export default defineComponent({
     },
     mounted() {
         // Fetch blog posts excluding the latest one using the store
-        this.blogPostStore.fetchBlogPostsExcludingLatest();
+        this.blogPostStore.fetchAllBlogPosts();
     },
     methods: {
         getExcerpt(content: string): string {
