@@ -1,4 +1,4 @@
-FROM node:current-alpine3.19 as buildContainer
+FROM node:current-alpine3.19 as build_container
 
 # Set working directory
 WORKDIR /app
@@ -17,6 +17,6 @@ WORKDIR /usr/share/nginx/html
 # Remove default nginx static assets
 RUN rm -rf ./*
 # Copy static assets from builder stage
-COPY --from=buildContainer /app/dist .
+COPY --from=build_container /app/dist .
 # Containers run nginx with global directives and daemon off
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
